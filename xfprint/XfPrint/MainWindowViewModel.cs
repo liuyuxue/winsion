@@ -26,7 +26,7 @@ namespace XfPrint
 {
     public class MainWindowViewModel : Prism.Mvvm.BindableBase, CommonViewControl.IPage
     {
-       
+       //1
     }
 
 }
