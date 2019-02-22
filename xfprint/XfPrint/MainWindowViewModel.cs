@@ -24,9 +24,9 @@ using ZXing.Rendering;
 
 namespace XfPrint
 {
-    public class MainWindowViewModel : Prism.Mvvm.BindableBase, CommonViewControl.IPage
+    public class MainWindowViewModel : Prism.Mvvm.BindableBase 
     {
-       //1
+        
     }
 
 }
