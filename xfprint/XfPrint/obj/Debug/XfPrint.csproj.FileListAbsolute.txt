@@ -38,3 +38,6 @@ C:\Users\lyx\Desktop\打印\xfprint\XfPrint\obj\Debug\TabDev.g.cs
 C:\Users\lyx\Desktop\打印\xfprint\XfPrint\obj\Debug\TabDev.baml
 C:\Users\lyx\Desktop\打印\xfprint\XfPrint\obj\Debug\TabArea.g.cs
 C:\Users\lyx\Desktop\打印\xfprint\XfPrint\obj\Debug\TabArea.baml
+D:\test\gittest1\winsion\xfprint\Output_Debug\XfPrint.exe.config
+D:\test\gittest1\winsion\xfprint\XfPrint\obj\Debug\XfPrint.exe
+D:\test\gittest1\winsion\xfprint\XfPrint\obj\Debug\XfPrint.pdb
