@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="XfPrint.UcItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:XfPrint"
+             mc:Ignorable="d" Background="Transparent"
+             >
+    <UserControl.Resources>
+        <local:Bool2VisibilityConverters x:Key="Bool2VisibilityConverters"/>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="Black"></Setter>
+        </Style>
+    </UserControl.Resources>
+    <StackPanel Orientation="Vertical" Background="Transparent" MouseDown="grid_print_MouseDown">
+        <Grid Name="grid_print" Background="White"   Height="235" Width="590" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="62"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="47"/>
+                <RowDefinition Height="33"/>
+            </Grid.RowDefinitions>
+            <Image Width="213" Height="213" Grid.RowSpan="5" Stretch="Fill"  Margin="5"  Source="{Binding erweimaBytes}"></Image>
+            <Label Grid.Column="1" Grid.Row="0" Content="消防设施维护管理标签" VerticalContentAlignment="Center" 
+               HorizontalAlignment="Center" FontSize="24"></Label>
+            <Label Grid.Column="1" Grid.Row="1" Content="{Binding devicename}" VerticalContentAlignment="Center" 
+               HorizontalAlignment="Center" FontSize="19" FontWeight="Light"></Label>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left">
+                <Label   Content="         编码 " VerticalContentAlignment="Center"  FontSize="20"  />
+                <Label Content="{Binding devicecode}" VerticalContentAlignment="Center" 
+               HorizontalAlignment="Center" FontSize="21" FontWeight="Light"></Label>
+            </StackPanel>
+            <Label Grid.Column="1" Grid.Row="3" Content="{Binding proprietor}" VerticalContentAlignment="Center" 
+               HorizontalAlignment="Center" FontSize="21" FontWeight="Light"></Label>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left">
+                <Label   Content="         电话 " VerticalContentAlignment="Center"  FontSize="20"  />
+                <Label   Content="{Binding tel}" VerticalContentAlignment="Center" FontSize="20"  />
+            </StackPanel>
+             
+        </Grid>
+        <Grid Height="25" Background="Transparent">
+            <CheckBox Grid.Row="0"  HorizontalAlignment="Right" VerticalAlignment="Center" 
+                      Background="LightGray" Margin="10,0,10,2" IsChecked="{Binding check}"
+                      IsEnabled="False" > 
+            </CheckBox>
+        </Grid>
+
+    </StackPanel>
+</UserControl>

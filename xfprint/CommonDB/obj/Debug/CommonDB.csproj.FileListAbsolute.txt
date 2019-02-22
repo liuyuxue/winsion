@@ -1,0 +1,12 @@
+C:\Users\lyx\Desktop\打印\WpfAppMain\CommonDB\bin\Debug\CommonDB.dll
+C:\Users\lyx\Desktop\打印\WpfAppMain\CommonDB\bin\Debug\CommonDB.pdb
+C:\Users\lyx\Desktop\打印\WpfAppMain\CommonDB\bin\Debug\MySql.Data.dll
+C:\Users\lyx\Desktop\打印\WpfAppMain\CommonDB\obj\Debug\CommonDB.csprojResolveAssemblyReference.cache
+C:\Users\lyx\Desktop\打印\WpfAppMain\CommonDB\obj\Debug\CommonDB.dll
+C:\Users\lyx\Desktop\打印\WpfAppMain\CommonDB\obj\Debug\CommonDB.pdb
+C:\Users\lyx\Desktop\打印\xfprint\CommonDB\bin\Debug\CommonDB.dll
+C:\Users\lyx\Desktop\打印\xfprint\CommonDB\bin\Debug\CommonDB.pdb
+C:\Users\lyx\Desktop\打印\xfprint\CommonDB\bin\Debug\MySql.Data.dll
+C:\Users\lyx\Desktop\打印\xfprint\CommonDB\obj\Debug\CommonDB.csprojResolveAssemblyReference.cache
+C:\Users\lyx\Desktop\打印\xfprint\CommonDB\obj\Debug\CommonDB.dll
+C:\Users\lyx\Desktop\打印\xfprint\CommonDB\obj\Debug\CommonDB.pdb

@@ -1,0 +1,121 @@
+﻿<UserControl x:Class="XfPrint.TabDev"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:XfPrint"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="False"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:commoncontrol="clr-namespace:CommonViewControl;assembly=CommonViewControl"
+             mc:Ignorable="d"  Height="910" Width="1600"
+             >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="dTemplate">
+                <local:UcItem x:Name="xx" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDown">
+                            <i:InvokeCommandAction  Command="{Binding ItemClickCommand}"
+                                                   />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </local:UcItem>
+
+            </DataTemplate>
+
+        </ResourceDictionary>
+
+    </UserControl.Resources>
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+       
+        <Grid Grid.Row="0" Background="#444445" >
+            <StackPanel Orientation="Horizontal">
+                <Label Content="甲方单位" Foreground="White" FontSize="14" VerticalContentAlignment="Center" Margin="15,2,10,2"></Label>
+                <ComboBox Width="300" Height="30" Margin="5,2,50,2" VerticalContentAlignment="Center"  
+                          ItemsSource="{Binding Organizations}"  DisplayMemberPath="organizationname" SelectedItem="{Binding OrgCurrent}"/>
+                <Label Content="设施分类" Foreground="White" FontSize="14" VerticalContentAlignment="Center" Margin="15,2,10,2"></Label>
+                <ComboBox Name="cmbDevtypes" Width="250" Height="30" Margin="5,2,15,2" VerticalContentAlignment="Center" 
+                          ItemsSource="{Binding DevTypes}"  DisplayMemberPath="devicetypename" SelectedIndex="-1"    >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction  Command="{Binding SelectionDevtypeChangedCommand}"
+                                                    CommandParameter="{Binding SelectedItem,ElementName=cmbDevtypes}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+                <ComboBox Name="cmbBasedevs" Width="250" Height="30" Margin="5,2,2,2" VerticalContentAlignment="Center"  
+                          ItemsSource="{Binding BaseDevs2}"  DisplayMemberPath="devicename"  SelectedItem="{Binding BaseDevCurrent}"/>
+                <Button Style="{ StaticResource btn_Text}" Content="生 成" Width="75" Height="30" Margin="30,2,2,2">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction  Command="{Binding SelectDevDataCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+                <Button Style="{ StaticResource btn_Text}" Content="打 印" Width="75" Height="30" Margin="30,2,2,2"  >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction  Command="{Binding PrintCommand}" CommandParameter="lib1ViewA"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+                <Label Content="电话" Foreground="White" FontSize="14" VerticalContentAlignment="Center" Margin="25,2,10,2"></Label>
+                <TextBox Width="200" Height="30" Text="{ Binding Tel,UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="TextChanged">
+                            <i:InvokeCommandAction  Command="{Binding TelTextChangedCommand}"  />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBox>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1" Background="#606060" >
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="全选" Foreground="White" Height="25" VerticalAlignment="Top" Margin="10,5,5,5"></Label>
+                    <CheckBox   VerticalAlignment="Top" Margin="0,10,5,5"  >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Unchecked">
+                                <i:InvokeCommandAction  Command="{Binding UnSelectAllItemCommand}"
+                                                   />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="Checked">
+                                <i:InvokeCommandAction  Command="{Binding SelectAllItemCommand}"
+                                                    />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
+                    </CheckBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="数量" Foreground="White" Height="25" VerticalAlignment="Top" Margin="10,5,1,5"></Label>
+                    <Label Content="{Binding DevModels.Count}" Foreground="White" Height="25" VerticalAlignment="Top" Margin="0,5,5,5"></Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="选中" Foreground="White" Height="25" VerticalAlignment="Top" Margin="10,5,1,5"></Label>
+                    <Label Content="{Binding SelectItemCount}" Foreground="White" Height="25" VerticalAlignment="Top" Margin="0,5,5,5"></Label>
+                </StackPanel>
+            </StackPanel>
+            <ListView Name="listview" Background="Transparent" Margin="5,3,5,3"  ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                      Width="1230" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center" 
+                      BorderThickness="0" ItemTemplate="{StaticResource dTemplate}" ItemsSource="{Binding DevModels}" >
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel></WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+            </ListView>
+        </Grid>
+        <Grid Grid.Row="2" Background="#444445" >
+            <commoncontrol:PageControl  CurrentIndex="{Binding CurrentPageIndex}"  
+                           TotalPages="{Binding PageCount}"></commoncontrol:PageControl>
+        </Grid>
+    </Grid>
+</UserControl>
